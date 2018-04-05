@@ -1,6 +1,6 @@
 {
   "name": "react-microvoz-icons",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Library of Microvoz icons for React",
   "main": "build/index.js",
   "peerDependencies": {
