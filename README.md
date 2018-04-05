@@ -25,5 +25,5 @@ class Home extends React.Component {
 
 Currently supported icons are:
 
-	![Alt text](./names.png)
-    <img src="./names.png">
+![Alt text](./names.png)
+<img src="./names.png">
