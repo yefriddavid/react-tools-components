@@ -2,13 +2,14 @@ import React from 'react';
 import iconPaths from './set.js';// the file exported from IcoMoon
 
 function getPath(iconName) {
-  const icon = iconPaths.icons.find(icon => icon.properties.name === iconName);
+  let icon = iconPaths.icons.find(icon => icon.properties.name === iconName || icon.icon.tags[0]);
 
   if (icon) {
     return icon.icon.paths;
   } else {
     console.warn(`icon ${iconName} does not exist.`);
-    return '';
+    icon = iconPaths.icons.find(icon => icon.properties.name === 'warning');
+    return icon || [];
   }
 }
 

@@ -1223,14 +1223,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function getPath(iconName) {
   var icon = _set2.default.icons.find(function (icon) {
-    return icon.properties.name === iconName;
+    return icon.properties.name === iconName || icon.icon.tags[0];
   });
 
   if (icon) {
     return icon.icon.paths;
   } else {
     console.warn('icon ' + iconName + ' does not exist.');
-    return '';
+    icon = _set2.default.icons.find(function (icon) {
+      return icon.properties.name === 'warning';
+    });
+    return icon || [];
   }
 }
 
