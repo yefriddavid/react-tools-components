@@ -2,7 +2,7 @@ import React from 'react';
 import iconPaths from './set.js';// the file exported from IcoMoon
 
 function getPath(iconName) {
-  let icon = iconPaths.icons.find(icon => icon.properties.name === iconName || icon.icon.tags[0]);
+  let icon = iconPaths.icons.find(icon => icon.properties.name === iconName);
 
   if (icon) {
     return icon.icon.paths;
