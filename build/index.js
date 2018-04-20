@@ -1223,7 +1223,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function getPath(iconName) {
   var icon = _set2.default.icons.find(function (icon) {
-    return icon.properties.name === iconName || icon.icon.tags[0];
+    return icon.properties.name === iconName;
   });
 
   if (icon) {
@@ -1233,7 +1233,7 @@ function getPath(iconName) {
     icon = _set2.default.icons.find(function (icon) {
       return icon.properties.name === 'warning';
     });
-    return icon || [];
+    return icon.icon.paths || [];
   }
 }
 

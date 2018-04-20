@@ -9,7 +9,7 @@ function getPath(iconName) {
   } else {
     console.warn(`icon ${iconName} does not exist.`);
     icon = iconPaths.icons.find(icon => icon.properties.name === 'warning');
-    return icon || [];
+    return icon.icon.paths || [];
   }
 }
 
