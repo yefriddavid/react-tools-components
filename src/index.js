@@ -1,43 +1,32 @@
 import React from 'react';
-import iconPaths from './set.js';// the file exported from IcoMoon
 
-function getPath(iconName) {
-  let icon = iconPaths.icons.find(icon => icon.properties.name === iconName);
+const FriendlyRoutes = ({ component: Component, ...rest }) => {
+  let element
 
-  if (icon) {
-    return icon.icon.paths;
-  } else {
-    console.warn(`icon ${iconName} does not exist.`);
-    icon = iconPaths.icons.find(icon => icon.properties.name === 'warning');
-    return icon.icon.paths || [];
+  if(fakeAuth.isAuthenticated(rest)){
+    if(rest.accessState === true)
+      element = (<Component {...rest} />)
+    else
+      element = (<Redirect to={{pathname: `/guest/accessing`, state: { from: rest.location }}} />)
+  }else{
+    if(rest.location.search.indexOf("p=") > 0){
+      element = (<Redirect to={{ pathname: '/guest/nut', state: { from: rest.location }}} />)
+    else{
+      element = (<Redirect to={{ pathname: '/auth/login'}} />)
+    }
   }
-}
-
-const MicroIcon = props => {
-  const styles = {
-    svg: {
-      display: 'inline-block',
-      verticalAlign: 'middle',
-    },
-    path: {
-      fill: props.color,
-    },
-  };
 
   return (
-    <svg
-      style={styles.svg}
-      width={`${props.size || 16}`}
-      height={`${props.size || 16}`}
-      viewBox="0 0 1024 1024"
-    >
-      {
-        getPath(props.icon).map((icon_path) => {
-          return <path style={styles.path} d={icon_path}></path>
-        })
-      }
-    </svg>
+    <Route {...rest} render={ (props) => (element)} />
   )
-};
+}
 
-export default MicroIcon;
+FriendlyRoutes.propTypes = {
+  accessState: PropTypes.bool.isRequired
+}
+
+const mapStateToProps = state => ({
+  accessState: state.auth.access.success
+})
+
+export default connect(mapStateToProps)(FriendlyRoutes)
