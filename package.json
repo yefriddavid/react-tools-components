@@ -1,7 +1,7 @@
 {
-  "name": "react-microvoz-icons",
+  "name": "react-tools-components",
   "version": "1.0.3",
-  "description": "Library of Microvoz icons for React",
+  "description": "Library of Components icons for React",
   "main": "build/index.js",
   "peerDependencies": {
     "react": "^15.5.4"
@@ -16,8 +16,8 @@
     "build": "webpack"
   },
   "author": {
-    "name": "Sergio Sebastian Arriagada",
-    "email": "sarriagada87@gmail.com"
+    "name": "Jeffrey David Rios Mora",
+    "email": "yefriddavid@gmail.com"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
